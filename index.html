@@ -200,7 +200,10 @@ footer{color:var(--muted);font-size:.78rem;text-align:center;margin:24px 0 8px;l
   <div class="chips" id="sit"></div>
   <div class="card" id="sitbox"></div>
 
-  <div class="sub">Desescalada verbal · 10 domínios</div>
+  <div class="sub">Técnicas de comunicação · toque para abrir</div>
+  <div id="tech"></div>
+
+  <div class="sub">Project BETA · 10 domínios, não 10 passos</div>
   <div class="card"><ul id="beta"></ul></div>
 
   <div class="sub">Corpo e voz</div>
@@ -374,6 +377,19 @@ $('#sit').innerHTML=SIT.map(function(s,i){return '<button>'+s.k+'</button>'}).jo
 $$('#sit button').forEach(function(b,i){b.addEventListener('click',function(){sit(i)})});
 var si=+store('dz-sit');sit(si>=0&&si<SIT.length?si:0);
 
+var TECH=[
+ ['Envolver','Apresentar-me pelo nome e função, chamar a pessoa pelo nome. É o primeiro passo do Project BETA: sem relação não há desescalada.','«Sr. B., sou o Gustavo, sou enfermeiro. Estou aqui para o ajudar.»','No primeiro segundo, mesmo que já se conheçam.'],
+ ['Escuta ativa','Ouvir para perceber, não para responder. Acenar, manter o contacto visual intermitente, não interromper.','«Continue, estou a ouvir.»','Quando a pessoa precisa de despejar a frustração.'],
+ ['Silêncio terapêutico','Pausas deliberadas que dão tempo para a pessoa pensar e baixar o ritmo. Não é ausência, é presença.','(pausa de alguns segundos, olhar calmo)','Depois de uma frase forte, antes de responder.'],
+ ['Validação emocional','Nomear e legitimar a emoção, sem concordar com o comportamento. É a mais consistentemente associada ao sucesso da desescalada.','«Percebo que esteja preocupado com o dia de amanhã. Faz sentido.»','Sempre que há uma emoção forte à vista.'],
+ ['Reformulação','Devolver por outras palavras o que a pessoa disse, para mostrar que foi ouvida e corrigir mal-entendidos.','«Se percebi bem, vai estar fora amanhã e tem medo de ficar sem a medicação.»','Quando o discurso é confuso ou acusatório.'],
+ ['Perguntas abertas','Perguntas que não se respondem com sim ou não. Ajudam a encontrar a necessidade por trás da exigência.','«O que é que o ajudaria neste momento?»','Para passar da exigência para a necessidade.'],
+ ['Clarificar e focar','Pedir que explique o que não ficou claro, sem juízo, e trazer a conversa para o que é possível resolver agora, um problema de cada vez.','«Quando diz que ninguém o ouve, o que aconteceu?» · «Vamos tratar primeiro da medicação de hoje. A de amanhã vemos a seguir com o médico.»','Quando há generalizações («sempre», «ninguém») ou a pessoa salta de queixa em queixa.'],
+ ['Oferecer escolhas','Devolver algum controlo à pessoa com opções reais. Nunca oferecer o que não se pode cumprir.','«Prefere esperar aqui ou lá fora, enquanto falo com o médico?»','Quando a pessoa se sente sem controlo.'],
+ ['Limite respeitoso','Dizer com clareza o que não é aceitável, sem ameaça, e manter a porta aberta.','«Não aceito ser ameaçado, mas quero continuar a ajudá-lo.»','Quando há ameaça ou insulto.'],
+ ['Concordar em discordar','Concordar com o que é verdade na queixa, e aceitar discordar do resto sem discutir. Não se ganha a discussão; ganha-se a relação.','«Tem razão, a espera hoje foi longa. Sobre a medicação de amanhã não vamos concordar, mas posso explicar e ajudar no que depende de mim.»','Quando a pessoa insiste em convencer-nos, ou acusa a equipa.']
+];
+$('#tech').innerHTML=TECH.map(function(t,i){return '<details class="card"><summary><span><h3>'+(i+1)+'. '+t[0]+'</h3></span></summary><div class="in"><p>'+t[1]+'</p><div class="say yes">'+t[2]+'</div><p class="why">Quando: '+t[3]+'</p></div></details>'}).join('');
 /* BETA */
 var BETA=[['Respeitar o espaço','Cerca de dois braços, postura oblíqua, saída livre para os dois.'],['Não provocar','Mãos visíveis, braços descruzados, voz baixa.'],['Um só fala','Apresentar-se pelo nome.'],['Ser conciso','Frases curtas, uma ideia de cada vez.'],['Desejos e sentimentos','«O que é que precisa agora?» Nomear a emoção.'],['Escutar','Reformular, dar tempo de resposta.'],['Concordar ou discordar','Concordar com o que é verdade; concordar em discordar do resto.'],['Limites claros','Com respeito, sem ameaça.'],['Escolhas e otimismo','Água, sentar, falar com o médico.'],['Balanço depois','Com o utente e com a equipa.']];
 $('#beta').innerHTML=BETA.map(function(b,i){return '<li><b style="color:var(--ink)">'+(i+1)+'. '+b[0]+'.</b> '+b[1]+'</li>'}).join('');
